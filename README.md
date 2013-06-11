@@ -1,4 +1,4 @@
-googleinterviewhack
+google interview hack
 ===================
 
 Code for the mit google interview hack
