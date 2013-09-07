@@ -96,7 +96,21 @@ def oddManOut2(l):
     return r
 
 
+def oddManOut3(l):     
+    if len(l) == 1:
+        return l[0]
+    else:
+        l.sort()        
+        for i in xrange(0, len(l)-2, 2):
+            if l[i] != l[i+1]:
+                return l[i]
+            else:
+                pass
+        return l[-1]
 
+
+def oddManOut4(l):
+    return 2*sum(list(set(l)))-sum(l)
 
 
 class Stack(object):
