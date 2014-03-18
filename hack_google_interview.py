@@ -115,23 +115,23 @@ def oddManOut4(l):
 
 class Stack(object):
    
-   def __init__(self):
-       self.items = [] 
+    def __init__(self):
+        self.items = [] 
    
-   def push(self,item):
-       self.items.append(item)
+    def push(self,item):
+        self.items.append(item)
 
-   def pop(self):
-       return self.items.pop()
+    def pop(self):
+        return self.items.pop()
 
-   def isEmpty(self):
-       if self.items:
-           return False
-       else:
-           return True 
+    def isEmpty(self):
+        if self.items:
+            return False
+        else:
+            return True 
 
-   def top(self):
-       return self.items[-1]
+    def top(self):
+        return self.items[-1]
 
 
 class PowerStack(object):
@@ -193,24 +193,36 @@ class Queue(object):
         
 
     def dequeue(self):
-        while (not self.stack.isEmpty()):
-            self.helpStack.push(self.stack.pop())
-        to_be_removed = self.helpStack.pop()
-        while  (not self.helpStack.isEmpty()):    
-            self.stack.push(self.helpStack.pop())
-        return to_be_removed
+        if self.helpStack.isEmpty():    
+            while not self.stack.isEmpty():
+                self.helpStack.push(self.stack.pop())                  
+        return self.helpStack.pop()
+
+q = Queue()
+q.enqueue(1)
+q.enqueue(2)
+q.enqueue(3)
+a = q.dequeue()           
+assert a==1
+b = q.dequeue()
+assert b==2
             
     
 def isInStr(a, b):
-   current = 0
-   for i in range(0,len(b)):
-      for j in range(current,len(a)):
-          if a[j] == b[i]:
-              current = j + 1               
-              break
-      if j == len(a)-1 and i < len(b)-1:
-          return False
-      if i = len(b) -1 and j < len(a) -1:
-          return True
-   return True 
+    current = 0
+    for i in range(0,len(b)):
+       for j in range(current,len(a)):
+           if a[j] == b[i]:
+               current = j + 1               
+               break
+       if j == len(a)-1 and i < len(b)-1:
+           return False
+       if i == len(b) -1 and j < len(a) -1:
+           return True
+    return True 
+
+
+if __name__ == "__main__":
+    #TODO:doing test here
+    pass
 
